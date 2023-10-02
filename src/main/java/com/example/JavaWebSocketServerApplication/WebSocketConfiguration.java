@@ -10,9 +10,16 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfiguration implements WebSocketConfigurer {
 
-
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new WebSocketHandler(), "/webSocket");
+        //新增 WebSocket 處理程序並設定路徑。
+        registry.addHandler(new WebSocketHandler(), "/webSocket")
+                .setAllowedOrigins("*");
+               // .addInterceptors(new MyHandshakeInterceptor());
+
     }
+
+
+
+
 }
